@@ -8,9 +8,9 @@ class CalculateFrequentsForm(forms.Form):
 
 class KeywordsForm(forms.Form):
     url1 = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Enter website url'}), label=False)
+        attrs={'placeholder': 'Enter website1 url'}), label=False)
     url2 = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Enter website url'}), label=False)
+        attrs={'placeholder': 'Enter website2 url'}), label=False)
 
 
 class SimilarityForm(forms.Form):

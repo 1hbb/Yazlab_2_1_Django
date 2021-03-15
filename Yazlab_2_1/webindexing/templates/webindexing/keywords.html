@@ -1,6 +1,5 @@
 {% extends 'webindexing/base.html' %}
 {% load crispy_forms_tags %}
-
 {% block content %}
 <form action="" method="post">
   <div class="mb-3">
@@ -18,19 +17,45 @@
 <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Word</th>
+      <th scope="col">Website 1 Keywords</th>
+      <th scope="col">Frequency</th>
+      <th scope="col">Website 2 Keywords</th>
       <th scope="col">Frequency</th>
     </tr>
   </thead>
-  {% for data in data %}
+  {% for value in data %}
   <tbody>
     <tr>
       <th scope="row">{{forloop.counter}}</th>
-      <td>{{data.0}}</td>
-      <td>{{data.1}}</td>
+      <td>{{value.0.0}}</td>
+      <td>{{value.0.1}}</td>
+      <td>{{value.1.0}}</td>
+      <td>{{value.1.1}}</td>
     </tr>
   </tbody>
   {% endfor %}
 </table>
 {% endif %}
+{% if url1 and url2 %}
+<table class="table">
+<thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Website 1</th>
+      <th scope="col">Website 2</th>
+      <th scope="col">Similarity %</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{url1}}</td>
+      <td>{{url2}}</td>
+      <td>%10</td>
+    </tr>
+  </tbody>
+</table>
+{% endif %}
+
 {% endblock content %}
