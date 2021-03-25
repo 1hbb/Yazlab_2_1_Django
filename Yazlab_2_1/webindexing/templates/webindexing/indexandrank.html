@@ -1,4 +1,39 @@
 {% extends 'webindexing/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
-        <h1>Index & Rank Page</h1>
+<form action="" method="post">
+  <div class="mb-3">
+        <div class="content">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="Done" class="btn btn-info btn-block">
+            </form>
+        </div>
+  </div>
+</form>
+{% if data %}
+<table class="table">
+<thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Website</th>
+      <th scope="col">Similarity (%) </th>
+    </tr>
+  </thead>
+  {% for url, scor in data %}
+   <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{url}}</td>
+      <td>{{scor}}</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+  
+</table>
+
+{% endif %}
+
+
 {% endblock content %}

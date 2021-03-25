@@ -54,7 +54,10 @@ class getWords:
 
     def getUrlsInPage(self):
         urls = []
-        for link in self.soup.find_all('a'):
-            lnk = link.get('href')
-            urls.append(lnk)
-        print(urls)
+        # text = self.soup.find_all(text=True)
+        # regex = r'(?P<url>https?://[^\s]+)'
+        for link in self.soup.find_all('a', attrs={'href': re.compile("^https://")}):
+            url = link.get('href')
+            if url:
+                urls.append(url)
+        return urls[:5]
